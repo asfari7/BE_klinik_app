@@ -1,20 +1,20 @@
 const express = require('express');
-const indexRoutes = require('./routes/indexRoutes');
 const cors = require('cors');
-
 const app = express();
+const indexRoutes = require('./routes/indexRoutes');
 
-const corsOptions = {
+app.use(cors({
     origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    allowedHeaders: 'Content-Type,Authorization,Origin,X-Requested-With,Accept,Access-Control-Allow-Origin',
-}
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    optionsSuccessStatus: 204
+}));
 
-app.use(cors(corsOptions));
-
-app.use(express.json());
+app.options('*', cors());
 
 app.use(indexRoutes);
+
+app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
