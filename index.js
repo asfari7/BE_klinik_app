@@ -5,16 +5,16 @@ const indexRoutes = require('./routes/indexRoutes');
 
 app.use(cors({
     origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     optionsSuccessStatus: 204
 }));
 
 app.options('*', cors());
 
-app.use(indexRoutes);
-
 app.use(express.json());
+
+app.use(indexRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
