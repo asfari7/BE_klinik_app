@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 
 const corsOptions = {
-    origin: 'https://klinik-app.vercel.app',
+    origin: '*',
 };
 app.use(cors(corsOptions));
 
