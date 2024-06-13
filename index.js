@@ -6,8 +6,6 @@ const app = express();
 
 const corsOptions = {
     origin: 'https://klinik-app.vercel.app',
-    methods: 'GET,POST,PATCH,DELETE',
-    allowedHeaders: 'Content-Type, Authorization, X-Requested-With',
 };
 app.use(cors(corsOptions));
 
